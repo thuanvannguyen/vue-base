@@ -14,6 +14,9 @@ const objectOfAttrs = {
 }
 const number = 1
 const lisString = 'a,b,c,d,e,f,j'
+const convertToId = (data) => {
+  return data.split(',').reverse().join('-');
+}
 </script>
 
 <template>
@@ -41,5 +44,21 @@ const lisString = 'a,b,c,d,e,f,j'
   <!-- 6. 
   Su dung bieu thuc trong Binding (Rang buoc)
    -->
-  <button :id="lisString.split(',').join('-')">Number: {{ number * 2 }}</button>
+  <button :id="convertToId(lisString)">Number: {{ number * 2 }}</button>
 </template>
+
+
+
+<!-- 
+
+Tách chuỗi (split):
+
+Giả sử chuỗi đầu vào là "apple,banana,orange".
+split(',') sẽ tạo ra mảng: ["apple", "banana", "orange"].
+Đảo ngược (reverse):
+
+Sau khi dùng reverse(), mảng sẽ trở thành: ["orange", "banana", "apple"].
+Nối lại chuỗi (join):
+
+Cuối cùng, join('-') sẽ nối các phần tử mảng lại thành chuỗi: "orange-banana-apple".
+-->

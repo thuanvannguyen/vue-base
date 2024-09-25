@@ -15,8 +15,11 @@ const objectOfAttrs = {
 const number = 1
 const lisString = 'a,b,c,d,e,f,j'
 const convertToId = (data) => {
-  return data.split(',').reverse().join('-');
+  return data.split(',').reverse().join('-')
 }
+
+const attributeName = 'href'
+const url = 'test'
 </script>
 
 <template>
@@ -45,9 +48,15 @@ const convertToId = (data) => {
   Su dung bieu thuc trong Binding (Rang buoc)
    -->
   <button :id="convertToId(lisString)">Number: {{ number * 2 }}</button>
+
+  <!-- 7. Đối Số Động -->
+  <a v-bind:[attributeName]="url">Click Here!</a>
+
+  <!-- Reactivity -->
+  <div>
+    <p>{{ count }}</p>
+  </div>
 </template>
-
-
 
 <!-- 
 

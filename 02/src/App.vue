@@ -1,5 +1,5 @@
 <script setup>
-import { nextTick, ref } from 'vue'
+import { computed, nextTick, reactive, ref } from 'vue'
 
 const count = ref(3)
 console.log(count.value)
@@ -20,6 +20,18 @@ const handleIncrement = async () => {
   await nextTick()
   console.log(document.getElementById('count').innerText)
 }
+
+// Computed
+const book = reactive({
+  name: 'Book 1',
+  chapters: []
+})
+
+const addChapter = () => {
+  book.chapters.push('chapter')
+}
+
+const isPublished = computed(() => (book.chapters.length > 0 ? 'Có' : 'Không'))
 </script>
 
 <template>
@@ -32,6 +44,12 @@ const handleIncrement = async () => {
   <h3 id="count">{{ number }}</h3>
 
   <button @click="handleIncrement">Incree</button>
+  <br />
+  <!-- // Computed -->
+
+  <p>Book name: {{ book.name }}</p>
+  <p>Đã xuất bản: {{ isPublished }}</p>
+  <button @click="addChapter">Incree</button>
 </template>
 
 <style scoped></style>
